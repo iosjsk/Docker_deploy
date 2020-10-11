@@ -1,0 +1,32 @@
+---
+version: '3'
+services:
+
+ dbown:
+   build: 
+    context: .
+    dockerfile: ../mysql/Dockerfile
+   ports:
+    - 6600:3306
+   environment:
+    MYSQL_ROOT_PASSWORD: test@1234
+   restart: always
+
+ mytom:
+   build: 
+    context: .
+    dockerfile: ../Docker/Dockerfile
+   ports:
+    - 9090:8080
+   depends_on:
+    - dbown
+
+ myapache:
+  build:
+   context: .
+   dockerfile: ../apache/Dockerfile
+  ports:
+    - 9999:80
+  depends_on:
+    - dbown
+
