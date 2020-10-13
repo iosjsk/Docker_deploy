@@ -12,8 +12,6 @@ services:
     MYSQL_ROOT_PASSWORD: test@1234
    restart: always
 
- mycent:
-   image: centos:latest
 
 
  myapache:
